@@ -19,8 +19,8 @@ import FAQAccordion from "@/components/FAQAccordion";
 import HeroScanVisual from "@/components/HeroScanVisual";
 import Logo from "@/components/Logo";
 import ScrollReveal from "@/components/ScrollReveal";
+import { ScanForm } from "@/components/ScanForm";
 import SiteHeader from "@/components/SiteHeader";
-import UrlScanForm from "@/components/UrlScanForm";
 import brand from "@/lib/brand";
 import { faqItems } from "@/lib/landing-content";
 
@@ -81,7 +81,7 @@ export default function LandingPage() {
                 <p className="landing-eyebrow">THE LAST CHECK BEFORE GO-LIVE</p>
                 <h1 id="hero-title">Security check<br className="desktop-break" /> before you <span>launch.</span></h1>
                 <p className="landing-hero-copy">Find exposed keys, missing headers, and public files before someone else does.</p>
-                <UrlScanForm inputId="site-url" />
+                <ScanForm idPrefix="hero" />
                 <ul className="landing-trust-list" aria-label="Scan details">
                   <li><ShieldCheck size={18} aria-hidden="true" /><span>Passive checks</span></li>
                   <li><EyeOff size={18} aria-hidden="true" /><span>Never stores full secrets</span></li>
@@ -247,9 +247,8 @@ export default function LandingPage() {
             <div className="final-cta-copy">
               <p className="landing-eyebrow">YOUR URL. YOUR CALL.</p>
               <h2 id="final-cta-title">One last check before launch.</h2>
-              <p>No scan runs until the service is connected. The current preview is illustrative.</p>
             </div>
-            <UrlScanForm inputId="final-site-url" />
+            <ScanForm idPrefix="cta" />
           </ScrollReveal>
         </section>
 

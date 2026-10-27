@@ -34,6 +34,7 @@ export type SafeFetchOptions = {
   method?: "GET" | "HEAD";
   budget?: FetchBudget;
   signal?: AbortSignal;
+  allowAnyContentType?: boolean;
 };
 
 export type CreateBudgetOptions = {
@@ -499,7 +500,7 @@ export async function safeFetch(input: string | URL, options: SafeFetchOptions =
       }
 
       const responseHeaders = getHeaders(response);
-      if (!isTextContentType(response.headers.get("content-type"))) {
+      if (!options.allowAnyContentType && !isTextContentType(response.headers.get("content-type"))) {
         await response.body?.cancel().catch(() => undefined);
         return resultError("NETWORK", "The response content type is not textual.", currentUrl.href, response.status, responseHeaders);
       }
